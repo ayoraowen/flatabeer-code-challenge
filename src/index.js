@@ -20,7 +20,7 @@ function renderOneBeer(beer1, beer2) {
 }
   
 function getAllBeers(id1, id2) {
-    fetch('http://localhost:3000/beers')
+    fetch('https://my-json-server.typicode.com/ayoraowen/flatabeer-code-challenge/beers')
       .then(res => res.json())
       .then(beers => renderOneBeer(beers[id1], beers[id2]))
   
