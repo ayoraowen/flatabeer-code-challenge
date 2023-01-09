@@ -29,7 +29,6 @@ function renderOhSoFlattening(beer) {
   }
   
   function getOhSoFlatteningBeer() {
-    let returnedMap
     fetch('https://my-json-server.typicode.com/ayoraowen/flatabeer-code-challenge/beers/1')
       .then(res => res.json())
       .then(beer => {
