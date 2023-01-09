@@ -1,29 +1,50 @@
-
 // Code here
-function renderOneBeer(beer1, beer2) {
-    console.log(beer1)
+function renderOhSoFlattening(beer) {
     let beerName = document.querySelector('#beer-name')
-    beerName.textContent = beer1.name
-    console.log(beerName)
+    beerName.textContent = beer.name
     let description = document.querySelector('#beer-description')
-    description.textContent = beer1.description
-    let reviews = document.querySelector('#review-list li')
-    reviews.textContent = beer1.reviews
-    let menubeer1 = document.getElementsByTagName('li')[0]
-    menubeer1.textContent = beer1.name
-    let menubeer2 = document.getElementsByTagName('li')[1]
-    // console.log(menubeer2)
-    menubeer2.textContent = beer2.name
+    description.textContent = beer.description
     let beerimg = document.querySelector('img')
-    console.log(beerimg)
-    beerimg.src = beer1.image_url
-}
+    beerimg.src = beer.image_url
+  }
   
-function getAllBeers(id1, id2) {
+  function renderMenuBeers(navBeer) {
+    let menubeer = document.getElementsByTagName('ul')[0]
+    let c = document.createElement('li')
+    c.innerHTML = navBeer.name
+    menubeer.append(c)
+  
+  }
+  
+  function getAllBeers() {
     fetch('https://my-json-server.typicode.com/ayoraowen/flatabeer-code-challenge/beers')
       .then(res => res.json())
-      .then(beers => renderOneBeer(beers[id1], beers[id2]))
+      .then(beers => {
+        beers.forEach(element => {
+          renderMenuBeers(element)
+        });
   
-}
-
-getAllBeers(0, 1)
+      })
+  
+  }
+  
+  function getOhSoFlatteningBeer() {
+    let returnedMap
+    fetch('https://my-json-server.typicode.com/ayoraowen/flatabeer-code-challenge/beers/1')
+      .then(res => res.json())
+      .then(beer => {
+        renderOhSoFlattening(beer)
+        let reviewList = beer.reviews
+        reviewList.map(element => {
+          let x = document.createElement('li')
+          x.append(element)
+          let reviews = document.querySelector('#review-list')
+          reviews.append(x)
+  
+        })
+      })
+  }
+  
+  getOhSoFlatteningBeer()
+  getAllBeers()
+  
