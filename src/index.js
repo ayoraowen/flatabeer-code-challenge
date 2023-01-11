@@ -1,5 +1,5 @@
 // Code here
-function handleClickEvents() {
+function handleReviewClickEvents() {
   let form = document.querySelector('#review-form')
   form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -63,4 +63,4 @@ function getOhSoFlatteningBeer() {
 
 getOhSoFlatteningBeer()
 getAllBeers()
-handleClickEvents()
+handleReviewClickEvents()
