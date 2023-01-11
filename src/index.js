@@ -1,4 +1,20 @@
 // Code here
+function handleClickEvents() {
+  let form = document.querySelector('#review-form')
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let newReview = e.target.review.value
+    let revTextnode = document.createTextNode(newReview)
+    let newReviewLi = document.createElement('li')
+    newReviewLi.append(revTextnode)
+    console.log(newReview)
+    let reviewsList = document.querySelector('#review-list')
+    reviewsList.appendChild(newReviewLi)
+    form.reset()
+  })
+}
+
+
 function renderOhSoFlattening(beer) {
   let beerName = document.querySelector('#beer-name')
   beerName.textContent = beer.name
@@ -47,3 +63,4 @@ function getOhSoFlatteningBeer() {
 
 getOhSoFlatteningBeer()
 getAllBeers()
+handleClickEvents()
